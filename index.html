@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <!-- <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+
+    <title>Random Background Colors</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+        /* Start BG with peachy color first */
+            background-color: #FFDDC1;
+        /* Smooth transition */
+            transition: background-color 2s ease; 
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Function to generate a random color
+        function getRandomColor() {
+            return `hsl(${Math.random() * 360}, 100%, 75%)`;
+        }
+
+        // Function to change the background color every 3 seconds
+        setInterval(() => {
+            document.body.style.backgroundColor = getRandomColor();
+        }, 3000);
+    </script>
+
+  </head>
+    <body> 
+      <main>
+          <h1>Welcome to XIAO XING's Website</h1>  
+      
+          <h2> HOME PAGE </h2>
+    
+      </ol>
+          <h3>Click on these link to check out my  CC Lab Projects!</h3>
+            <li><a href="Project1.html">Lost & Found</a></li>
+            <li><a href="Project2.html">Face Generator</a></li>
+            <li><a href="Project3.html">Experimental Clock</a></li>
+            <li><a href="Project4.html">Exquisite Corpse</a></li>
+            <li><a href="Project5.html">Optical Illusion</a></li>
+            <li><a href="Project6.html">Data Portrait</a></li>
+            <li><a href="Project7.html">Autobiographical Game</a></li>
+      <ol>
+
+    </ol>
+         <h3>ABOUT ME:</h3>
+          <li><a href="Biography.html">MY BIO</a></li>
+          <li><a href="XiaoQingXingResume.docx.html">MY RESUME</a></li>
+
+    <ol>
+      </main>
+      <script src="index.js"></script>
+    </body>
+</html>
