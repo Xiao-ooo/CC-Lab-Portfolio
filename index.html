@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
-    <!-- <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
-
-    <title>Random Background Colors</title>
     <style>
         body {
             height: 100vh;
@@ -17,46 +14,93 @@
             justify-content: center;
             align-items: center;
             font-family: 'Times New Roman', Times, serif;
-        /* Start BG with peachy color first */
-            background-color: #FFDDC1;
-        /* Smooth transition */
-            transition: background-color 2s ease; 
+            color: white;
+            background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
+            background-size: 400% 400%;
+            animation: laserMovement 10s ease infinite; /* Animation for laser effect */
         }
-        
-        h1{
-                color: black;
-                text-align: center;
+
+        @keyframes laserMovement {
+            0% {
+                background-position: 0% 50%;
             }
 
-            h1:hover {
-                color: yellow;
-                transform: scale(1.2);
+            50% {
+                background-position: 100% 50%;
             }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            color: rgb(36, 255, 251);
+        }
+
+        h1:hover {
+            color: yellow;
+            transform: scale(1.2);
+        }
+
+        h2 {
+            color: rgb(41, 200, 208);
+            text-align: center;
+        }
+
+        h3 {
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            text-align: center;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2ecc71;
+            text-decoration: underline;
+        }
+
+/* Transparent box under the text */
+    .content-box {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .content-box h1, .content-box h2, .content-box h3, .content-box ul {
+            margin: 10px 0;
+        }
 
     </style>
 </head>
+
 <body>
-    <script>
-        // Function to generate a random color
-        function getRandomColor() {
-            return `hsl(${Math.random() * 360}, 100%, 75%)`;
-        }
+    <main>
+        <div class="content-box">
+        <h1>Welcome to XIAO XING's Portfolio!</h1>
+        <h2>Home Page</h2>
 
-        // Function to change the background color every 3 seconds
-        setInterval(() => {
-            document.body.style.backgroundColor = getRandomColor();
-        }, 3000);
-    </script>
-
-  </head>
-    <body> 
-      <main>
-          <h1>Welcome to XIAO XING's Website</h1>  
-
-          <h2> HOME PAGE </h2>
-    
-      </ol>
-          <h3>Click on these link to check out my  CC Lab Projects!</h3>
+        <h3>Click on these links to check out my CC Lab Projects!</h3>
+        <ul>
             <li><a href="Project1.html">Lost & Found</a></li>
             <li><a href="Project2.html">Face Generator</a></li>
             <li><a href="Project3.html">Experimental Clock</a></li>
@@ -64,20 +108,14 @@
             <li><a href="Project5.html">Optical Illusion</a></li>
             <li><a href="Project6.html">Data Portrait</a></li>
             <li><a href="Project7.html">Autobiographical Game</a></li>
-      <ol>
+        </ul>
 
-    </ol>
-         <h3>ABOUT ME:</h3>
-          <li><a href="Biography.html">MY BIO</a></li>
-          <li><a href="XiaoQingXingResume.docx.html">MY RESUME</a></li>
-
-    <ol>
-      </main>
-      <script src="index.js"></script>
-    </body>
-
-
-
-
+        <h3>About Me:</h3>
+        <ul>
+            <li><a href="Biography.html">My Bio</a></li>
+            <li><a href="XiaoQingXingResume.docx.html">My Resume</a></li>
+        </ul>
+    </main>
+</body>
 
 </html>
