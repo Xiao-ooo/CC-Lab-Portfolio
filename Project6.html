@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
 </head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+
     <style>
         body {
             background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
@@ -35,6 +38,10 @@
             line-height: 1.6;
         }
 
+        .sketch {
+            margin-left: calc(50% - 300px)
+        }
+
     </style>
 
     <body>
@@ -48,17 +55,19 @@
         }
         </style>
         <a href="index.html"><- Back to Home Screen</a>
+        
         <h2>PROJECT 6</h2>
         <h1>Data Portrait</h1>
-
+        <script src="P6sketch.js"></script>
     </body>
         <h3>This project is to collect a set of data for over 7 days and using these data to create an data portrait 
             that can represent ourself. I collected my sleeping data for 10 days and used these data to create a plot 
             graph. </h3>
             
-            <iframe src="https://editor.p5js.org/xingx460/full/v-UUh3zRj" width="600"; height="650"></iframe>
+            
+            <div id="sketch-container" class="sketch"></div>
 
-        <h2>REFLECTION</h2>   
+            <h2>REFLECTION</h2>   
             <h4>The data i am tracking for this assignment is my sleeping schedules for 10 days. I got this sleeping 
                 data from my phone because i have this "sleep" mode on and it has like a wind down time that i set up 
                 before the actual sleep time. And i set my sleep time to like maybe 2am and wakeup at 7:10am... So i 
