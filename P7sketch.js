@@ -33,7 +33,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(600, 400).parent("sketch-container");
   
   myMusic.play();
   myMusic.setVolume(0.5);

@@ -2,7 +2,7 @@ let runDistance = 0;
 let speed;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(600, 600).parent("sketch-container");
   noStroke();
 }
 

@@ -8,7 +8,7 @@ const minRGB = 0;
 const maxRGB = 255;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(400, 400).parent("sketch-container");
 }
 
 //Random background color generates when this is trigered
