@@ -7,7 +7,7 @@ class LivingRScene {
 // Eye value in the box   
     this.eyes = [];  
 //Can set amount of eyeballs [more the harder to play]
-    this.numEyes = 10;
+    this.numEyes = 20;
 
 // Create random eyes
     for (let i = 0; i < this.numEyes; i++) {
