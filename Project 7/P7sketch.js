@@ -14,6 +14,8 @@ let livingFloor;
 let myFont;
 let myMusic;
 
+let inputActive = false;
+
 function preload() {
   
   //Fonts credit to: PressStart2P
@@ -53,6 +55,8 @@ function setup() {
   
   currentScene = instructionScene;
   currentScene.enterScene(); 
+
+  inputActive = true;
   
 }
 
