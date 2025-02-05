@@ -3,104 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <title>XIAO's BIOGRAPHY</title>
     <style>
         body {
-            background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
+            font-family: 'Times New Roman', sans-serif;
+            background: linear-gradient(45deg, #f296c1, #163d58, #28c6a6, #000000);
             background-size: 400% 400%;
+            margin: 0;
+            padding: 0;
+            color: #06170d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; 
+            min-height: 100vh;
+            line-height: 1.6;
         }
-        h1 {
-            font-size: 3em;
+
+        h1, h2, h3, h4 {
+            margin: 0;
+            padding: 0;
+            color: #444;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            padding: 40px;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; 
+        }
+
+        .header {
             text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
             color: rgb(36, 255, 251);
+            margin-bottom: 10px;
+        }
+
+        /* Cute Home Button */
+        .home-btn {
+            padding: 15px 30px;
+            background-color: #7dd4fc;
+            color: #0c5244;
+            border: none;
+            border-radius: 50px; 
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .home-btn:hover {
+            background-color: #fbc8f3; 
+            transform: scale(1.05); 
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-btn:active {
+            background-color: #d19fb8; 
+        }
+
+        /* Bubble Box */
+        .bubble {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(246, 15, 15, 0.1);
+            width: 100%;
+            max-width: 900px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            overflow: visible; 
         }
 
         h2 {
+            font-size: 2rem;
             color: rgb(14, 38, 67);
-            text-align: center;
-        }
-
-        h3 {
-            color: rgb(255, 255, 255);
-            text-align: center;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        h4 {
-            color: rgb(121, 245, 104);
-            text-align: center;
+            border-bottom: 2px solid #0288d1;
+            padding-bottom: 5px;
             margin-bottom: 20px;
-            line-height: 1.6;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        a {
+            color: rgb(22, 215, 244);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #0288d1;
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        /* Copy Right for me */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #0b211d;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .home-btn {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
         }
     </style>
+</head>
 
 <body>
-    <style>
-        a{
-            color:rgb(22, 215, 244);
-        }
-        a:hover {
-        color: yellow;
-        transform: scale(1.2);
-    }
-    </style>
-    <a href="../index.html">home</a>
+    <div class="container">
 
-    <h1>XIAO's BIOGRAPHY</h1>
+        <!-- Home Button -->
+            <a href="../index.html" class="home-btn">🏠 ←Home</a>
+
+
+        <!-- Education Section -->
+        <div class="bubble">
+            <h2>Education</h2>
+            <p>Parsons School of Design BFA: Design & Technology</p>
+            <ul>
+                <li><a href="https://docs.google.com/presentation/d/1yLXNUWWR9BS7JIGvWSr0K_1bNHtOLXm0z-BqEhSczZc/edit?usp=sharing" target="_blank">Early Works</a></li>
+                
+            </ul>
+        </div>
+
+        <!-- Hobbies Section -->
+        <div class="bubble">
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Making Desserts! [Tiramisu, Cheese Cake, Crepe]</li>
+                <li>Swimming and Diving</li>
+                <li>Playing Mobile Games</li>
+                <li>Watching Horror Movies!</li>
+            </ul>
+        </div>
+
+        <!-- Job Interests Section -->
+        <div class="bubble">
+            <h2>Job Interests</h2>
+            <ul>
+                <li>UI/UX Designer</li>
+                <li>Advertisement Design</li>
+                <li>Café Owner</li>
+            </ul>
+        </div>
+
+        <!-- Personal Background Section -->
+        <div class="bubble">
+            <h2>Personal Background</h2>
+            <p>The first "computing class" I took was AP Computer Science Principle. It wasn't really a "coding" class to me because we didn't learn any professional coding languages. But it was a very useful start for me because I did not expect to study Design and Technology in College and continue to code. When I made my choice to major in this field, I took my first official coding class "Code Craft" in my freshman year, starting with P5js and some Arduino. Even though I am still not using exactly JavaScript and Python, this class really helped me with my second-year courses. With this little start, I did not struggle as much as I thought I would, and somehow coding became something really interesting yet frustrating. The point I feel success in coding is when I finally debug something, and there is no error or bug. Then I realize later on, once you understand a little bit of coding, it becomes easier to understand other programming languages. Now that I think back, it's surprising that I somehow did it, and now I'm learning more, which is very useful because once you understand how one language functions, it's easier to use others.</p>
+        </div>   
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 XIAO's Biography. All rights reserved.</p>
+    </footer>
 </body>
-    <h2>Education</h2>
-        <h3>-Parsons School of Design BFA: Design & Technology </h2>
-<body>    
-            <style>
-                a{
-                    color:rgb(22, 215, 244);
-                    text-align: center;
-                    margin-bottom: 15px;
-                    line-height: 1.6;
-                }
-                a:hover {
-                color: yellow;
-                transform: scale(1.2);
-            }
-            </style>
-
-    <li><a href="https://docs.google.com/presentation/d/1yLXNUWWR9BS7JIGvWSr0K_1bNHtOLXm0z-BqEhSczZc/edit?usp=sharing">Early Works</a></li>
-    <li><a href="https://www.instagram.com/xia0._.0art/">Check out my Art Account~</a></li>
-
-</body>   
-    <h2>Hobbies</h2>
-        <h3>-Making Desserts! [Tiramisu, Cheese Cake, Crepe] </h3>
-        <h3>-Swimming and Diving</h3>
-        <h3>-Playing mobile games</h3>
-        <h3>-Watching Horror Movies!</h3>
-    
-    <h2>Job Interests</h2>
-        <h3>-UI/UX designer</h3>
-        <h3>-Advertisement Design</h3>
-        <h3>-Café Owner</h3>
-
-    <h2>The first "computing class" i took was AP Computer Science Principle, it wasn't
-        really a "coding" class to me because we didn't learn any of the professional used
-        coding languages. But it was a very useful start for me because i did not expect to
-        study in Design and Technology in College and continue to code. When i made my choice
-        to major in this field, i took my first official coding class "code craft" in the freshman
-        year starting with P5js and some of Arduino. Even tho i am still not doing exactly Javascript 
-        and phyton but this class really did prepared and helped with my second year classes. With this
-        little start up i did not struggle as much as i thought i will and somehow coding becomes something
-        really interesting yet frustrating thing for me. The point i feel sucess in coding is when i finally
-        debug something and there is no error or bug happening. Then i realize later on, once you are able to
-        understand a little bit of coding and through out the time you will not struggle as much. Now that
-        i think back few years it is pretty suprising i somehow did it and i am now learning more stuffs
-        which is very useful because once you understand how one kind of language functions, it will not be
-        as hard to use another program that have same languages. </h2>
-
-
-
-
-
-
-
-
 </html>
