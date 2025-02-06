@@ -43,6 +43,48 @@
     .sketch3 {
             margin-left: calc(50% - 300px)
         }
+    
+    /* Cute Home Button */
+    .home-btn {
+            position: fixed;
+            bottom: 20px;
+            left:20px;
+            padding: 15px 30px;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+            margin-top: 20px;
+        }
+
+        .home-btn:hover {
+            background-color: #000000; 
+            transform: scale(1.05); 
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .home-btn {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+        }
 
 </style>
 
@@ -57,7 +99,7 @@
         }
         </style>
 
-        <a href="../2024 CC Lab.html"><- Back to Home Screen</a>
+        <a href="../2024 CC Lab.html"class="home-btn">🏠 ←BACK</a>
         
         <h2>PROJECT 3</h2>
         <h1>Experimental Clock</h1>

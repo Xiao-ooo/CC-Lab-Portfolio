@@ -16,7 +16,7 @@
             align-items: center;
             font-family: 'Times New Roman', Times, serif;
             color: white;
-            background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
+            background: linear-gradient(45deg, #0e53f5, #ff6f07, #dde694, #2b14f2, #e69111), #e4f80a;
             background-size: 400% 400%;
             animation: laserMovement 10s ease infinite; /* Animation for laser effect */
         }
@@ -36,24 +36,21 @@
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 8rem;
             text-align: center;
-            color: rgb(36, 255, 251);
+            color: rgba(49, 28, 6, 0.608);
+            
         }
 
         h1:hover {
-            color: yellow;
+            color: rgb(246, 246, 206);
             transform: scale(1.2);
         }
 
         h2 {
-            color: rgb(41, 200, 208);
+            color: rgb(198, 247, 207);
             text-align: center;
-        }
-
-        h3 {
-            color: rgb(255, 255, 255);
-            text-align: center;
+            font-size: 2rem;
         }
 
         ul {
@@ -63,7 +60,7 @@
         }
 
         li {
-            margin: 10px 0;
+            margin: 30px 0;
         }
 
         a {
@@ -76,12 +73,11 @@
             text-decoration: underline;
         }
 
-/* Transparent box under the text */
     .content-box {
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            background: rgba(0, 0, 0, 0.1);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
             width: 100%;
             max-width: 1000px;
             text-align: center;
@@ -91,25 +87,128 @@
             margin: 10px 0;
         }
 
+        /* Cute Home Button */
+        .home-btn {
+            position: fixed;
+            bottom: 20px;
+            left:20px;
+            padding: 15px 30px;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+            margin-top: 20px;
+        }
+
+        .home-btn:hover {
+            background-color: #000000; 
+            transform: scale(1.05); 
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .home-btn {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+        }
+       
+         .section {
+            padding: 100px;
+            border-radius: 200px;
+            background-color: rgb(255, 255, 255); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sub-section for links */
+        .sub-section {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+
+        .sub-section a {
+            padding: 20px;
+            color: rgb(247, 6, 6);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .sub-section a:hover {
+            background-color: #c8caee;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .project-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-list li {
+            margin: 50px 30; 
+        }
+
+        .project-list a {
+            text-decoration: none; 
+            color: #ffffff; 
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-list a:hover {
+            color: #000000;
+            font-weight: bold;
+        }
+
     </style>
 </head>
-    <a href="../index.html"><- Back to Home Screen</a>
+    
 <body>
-    <main>
-        <div class="content-box">
-        <h1>Welcome to XIAO XING's Portfolio!</h1>
-        <h2>Home Page</h2>
 
-        <h3>Click on these links to check out my CC Lab Projects!</h3>
-        <ul>
-            <li><a href="Project 1/Project1.html">Lost & Found</a></li>
-            <li><a href="Project 2/Project2.html">Face Generator</a></li>
-            <li><a href="Project 3/Project3.html">Experimental Clock</a></li>
-            <li><a href="Project 4/Project4.html">Exquisite Corpse</a></li>
-            <li><a href="Project 5/Project5.html">Optical Illusion</a></li>
-            <li><a href="Project 6/Project6.html">Data Portrait</a></li>
-            <li><a href="Project 7/Project7.html">Autobiographical Game</a></li>
-        </ul>
+    <h1>2025 Advance Critical Computation Lab</h1>
+
+        <a href="../index.html" class="home-btn">🏠 ←Home</a>
+
+    <main>
+        
+        <div class="content-box">
+
+        <h2>Projects</h2>
+
+        <div class="sub-section">
+            <ul class="project-list">
+                <!-- Leaving Space to replace future links of other projects -->
+              <!-- <li><a href="Project 1/Project1.html">Lost & Found</a></li>
+              <li><a href="Project 2/Project2.html">Face Generator</a></li>
+              <li><a href="Project 3/Project3.html">Experimental Clock</a></li>
+              <li><a href="Project 4/Project4.html">Exquisite Corpse</a></li>
+              <li><a href="Project 5/Project5.html">Optical Illusion</a></li>
+              <li><a href="Project 6/Project6.html">Data Portrait</a></li>
+              <li><a href="Project 7/Project7.html">Autobiographical Game</a></li> -->
+            </ul>
+          </div>
+
     </main>
 </body>
 
