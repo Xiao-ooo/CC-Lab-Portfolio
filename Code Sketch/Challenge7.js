@@ -1,6 +1,5 @@
 let myFont;
-const theWord = "SOS";
-let time = 0;
+const theWord = "WAA";
 
 function preload(){
     myFont = loadFont("../comicSans.ttf");
@@ -8,23 +7,26 @@ function preload(){
 
 function setup(){
     createCanvas(500, 250).parent("sketch-container");
-    background(0);
+    fill(191, 240, 180); 
+    noStroke();
 }
 
 function draw(){
+    background(0);
    
     let pointArray = myFont.textToPoints(theWord, 10, 180, 195, {sampleFactor: 0.17});
 
-    // delta time
-    time += 0.05;
 
     // for Loop of point array
     for (let i = 0; i < pointArray.length; i++) {
-        // sin to animate the waves [ 2 for little waves]
-        let yOffset = sin(time + i * 0.4) * 2; 
 
-        fill(252, 141, 61); 
+        const xPos = pointArray[i].x;
+        const yPos = pointArray[i].y;
 
-        circle(pointArray[i].x, pointArray[i].y + yOffset, 5);
+        const distance = dist(xPos, yPos, mouseX, mouseY);
+
+        let pointSize = map(distance, 0, 100, 50, 5, true);
+
+        circle(xPos, yPos, pointSize);
     }
 }

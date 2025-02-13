@@ -9,7 +9,7 @@ function preload(){
 
 function setup(){
    
-    createCanvas(600, 600).parent("sketch-container");
+    createCanvas(500, 250).parent("sketch-container");
     background(0);
 
 }
@@ -20,9 +20,7 @@ function draw(){
     pointArray = 
         //Points are objects and they are like pen tools in PS
             //Sample Factors are resolution correctors and uses brackets {} and collins :
-        myFont.textToPoints(theWord, 150, 100, 100, {sampleFactor: 0.2});
-
-
+        myFont.textToPoints(theWord, 10, 180, 190, {sampleFactor: 0.2});
 
     for ( let i = 0; i < pointArray.length; i++) {
         let size = 0;

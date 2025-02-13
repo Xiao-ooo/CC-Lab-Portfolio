@@ -7,7 +7,7 @@ function preload(){
 
 function setup(){
     
-    createCanvas(600, 600).parent("sketch-container");
+    createCanvas(500, 250).parent("sketch-container");
     background(0);
     
 }
@@ -18,7 +18,7 @@ function draw(){
 
     // Change the text size
     let fontSize = 150; 
-    let pointArray = myFont.textToPoints(ourWord, width / 2 - fontSize / 2, height / 2 + fontSize / 4, fontSize, {sampleFactor: 0.2});
+    let pointArray = myFont.textToPoints(ourWord, 10, 180, 195, {sampleFactor: 0.17});
 
     // Find the top and bottom of the bounding box
     let minY = Infinity;

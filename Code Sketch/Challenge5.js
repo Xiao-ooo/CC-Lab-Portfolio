@@ -8,29 +8,25 @@ function preload(){
 
 function setup(){
 
-    createCanvas(600, 600).parent("sketch-container");
-    background(0);
+    createCanvas(500, 250).parent("sketch-container");
+    rectMode(CENTER);
 }
 
 function draw(){
     background(0);
-    
-    let pointArray = myFont.textToPoints(ourWord, 20, 100, 100, {sampleFactor: 0.2});
+
+    let pointArray = myFont.textToPoints(ourWord, 10, 180, 195, {sampleFactor: 0.17});
 
     // Loop 
     for (let i = 0; i < pointArray.length; i++) {
 
-        let r = map(i, 0, pointArray.length, 139, 255); 
-        let g = map(i, 0, pointArray.length, 0, 255);   
-        let b = 0; 
-
-        fill(r, g, b);
-
         // modulo splits every other shape into pattern [2]
         if (i % 2 === 0) {
             circle(pointArray[i].x, pointArray[i].y, 5);
+            fill(183, 237, 197);
         } else {
-            square(pointArray[i].x - 5, pointArray[i].y - 5, 5);
+            square(pointArray[i].x, pointArray[i].y, 5);
+            fill(255, 158, 169);
         }
     }
 }
