@@ -8,10 +8,10 @@ function preload(){
 
 
 function setup(){
-    //Canvas 1
+   
     createCanvas(600, 600).parent("sketch-container");
     background(73, 122, 86);
- 
+
 }
 
 
@@ -29,6 +29,7 @@ function draw(){
 
         fill (255, 0, 0);
 
+        //Just need to set the size and fill a color, there will be a solid word
         circle(pointArray[i].x, pointArray[i].y, 5);
         
 

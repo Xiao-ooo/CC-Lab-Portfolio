@@ -9,14 +9,15 @@ function preload(){
 
 
 function setup(){
-    //Canvas 2
+ 
     createCanvas(600, 600).parent("sketch-container");
     background(0);
- 
+
 }
 
 
 function draw(){
+   
     pointArray = 
 
         //Points are objects and they are like pen tools in PS
@@ -28,6 +29,7 @@ function draw(){
     for ( let i = 0; i < pointArray.length; i++) {
         let size = 0;
 
+        //Using MAP to set ranges and change the color from dark to light shades
          let r = 0;
          let g = map(i, 260, pointArray.length, 5, 0);
          let b = 0;

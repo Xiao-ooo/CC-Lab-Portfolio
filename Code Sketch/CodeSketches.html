@@ -4,77 +4,115 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
-
-        <title>Document</title>
-</head>
-    <style>
-        body {
-            background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
-            background-size: 400% 400%;
-        }
-        h1 {
-            font-size: 3em;
-            text-align: center;
-            color: rgb(36, 255, 251);
-        }
-
-        /* Cute Home Button */
-        .home-btn {
-            position: fixed;
-            bottom: 20px;
-            left:20px;
-            padding: 15px 30px;
-            color: #ffffff;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
-            margin-top: 20px;
-        }
-
-        .home-btn:hover {
-            background-color: #000000; 
-            transform: scale(1.05); 
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 20px;
+        <title>Code Challenges</title>
+        <style>
+            body {
+                background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
+                background-size: 400% 400%;
+                font-family: 'Times New Roman', Times, serif, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
             }
-
             h1 {
-                font-size: 2.5rem;
+                font-size: 3em;
+                text-align: center;
+                color: rgb(36, 255, 251);
+                margin-bottom: 20px;
             }
 
-            h2 {
-                font-size: 1.8rem;
+            
+            .tab-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 10px;
             }
 
+            
+            .tab-link {
+                color: #ffffff;
+                text-decoration: none;
+                padding: 10px 20px;
+                background: #163d58;
+                border-radius: 25px;
+                font-size: 1.2rem;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+            .tab-link:hover {
+                background-color: #28c6a6;
+                transform: scale(1.1);
+            }
+
+            /* Home button styling */
             .home-btn {
-                font-size: 1rem;
-                padding: 12px 25px;
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                padding: 15px 30px;
+                color: #ffffff;
+                border: none;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+                margin-top: 20px;
             }
-        }
-        
-    </style>
 
+            .home-btn:hover {
+                background-color: #000000; 
+                transform: scale(1.05); 
+                box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .tab-container {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .tab-link {
+                    font-size: 1.1rem;
+                    padding: 12px 25px;
+                }
+
+                h1 {
+                    font-size: 2.5rem;
+                }
+
+                .home-btn {
+                    font-size: 1rem;
+                    padding: 12px 25px;
+                }
+            }
+        </style>
+    </head>
     <body>
 
-        <a href="../2025 CC Lab.html"class="home-btn">🏠 ←BACK</a>
+        <a href="../2025 CC Lab.html" class="home-btn">🏠 ←BACK</a>
 
-        
         <h1>CODE CHALLENGES</h1>
-             <a href="Code1.html">Challenge 1</a>
-             <a href="Code2.html">Challenge 2</a>
-             <a href="Code3.html">Challenge 3</a>
-             <a href="Code4.html">Challenge 4</a>
-             <a href="Code5.html">Challenge 5</a>
-             <a href="Code6.html">Challenge 6</a>
 
-    </body>           
+        <!-- Tab container for links -->
+        <div class="tab-container">
+            <a href="Code1.html" class="tab-link">Challenge 1</a>
+            <a href="Code2.html" class="tab-link">Challenge 2</a>
+            <a href="Code3.html" class="tab-link">Challenge 3</a>
+            <a href="Code4.html" class="tab-link">Challenge 4</a>
+            <a href="Code5.html" class="tab-link">Challenge 5</a>
+            <a href="Code6.html" class="tab-link">Challenge 6</a>
+        </div>
 
+    </body>
 </html>
