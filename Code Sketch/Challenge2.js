@@ -10,8 +10,7 @@ function preload(){
 
 function setup(){
     //Canvas 2
-    createCanvas(600, 400).parent("my-sketch2");
-    canvas.position = (450,450);
+    createCanvas(600, 600).parent("sketch-container");
     background(0);
  
 }
@@ -29,15 +28,13 @@ function draw(){
     for ( let i = 0; i < pointArray.length; i++) {
         let size = 0;
 
-        if (i > 10){
-            size = 5;
-        } else {
-            size = 10;
-        }
+         let r = 0;
+         let g = map(i, 260, pointArray.length, 5, 0);
+         let b = 0;
 
-        fill (random(0, 255), random(0, 255), random(0, 255));
+         fill(r, g, b);
 
-        square(pointArray[i].x, pointArray[i].y, size);
+        circle(pointArray[i].x, pointArray[i].y, 5);
 
     }
 }
