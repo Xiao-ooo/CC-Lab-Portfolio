@@ -1,43 +1,30 @@
-
 let myFont;
-
-const ourWord = "MOO";
+const theWord = "MOO";
+let time = 0;
 
 function preload(){
     myFont = loadFont("../comicSans.ttf");
 }
 
-
 function setup(){
-    //Canvas 2
     createCanvas(600, 600).parent("sketch-container");
     background(0);
- 
 }
-
 
 function draw(){
-    pointArray = 
+   
+    let pointArray = myFont.textToPoints(theWord, 150, 100, 100, {sampleFactor: 0.2});
 
-        //Points are objects and they are like pen tools in PS
-            //Sample Factors are resolution correctors and uses brackets {} and collins :
-        myFont.textToPoints(ourWord, 20, 100, 100, {sampleFactor: 0.2});
+    // delta time
+    time += 0.05;
 
+    // for Loop of point array
+    for (let i = 0; i < pointArray.length; i++) {
+        // sin to animate the waves [ 5 for little waves]
+        let yOffset = sin(time + i * 0.5) * 5; 
 
+        fill(255, 0, 0); 
 
-    for ( let i = 0; i < pointArray.length; i++) {
-        let size = 0;
-
-        if (i > 10){
-            size = 5;
-        } else {
-            size = 10;
-        }
-
-        fill (random(0, 255), random(0, 255), random(0, 255));
-
-        square(pointArray[i].x, pointArray[i].y, size);
-
+        circle(pointArray[i].x, pointArray[i].y + yOffset, 5);
     }
 }
-

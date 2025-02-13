@@ -20,11 +20,10 @@ function draw(){
     background(0);
 
     pointArray = 
-
         //Points are objects and they are like pen tools in PS
-            //Sample Factors are resolution correctors and uses brackets {} and collins :
         myFont.textToPoints(ourWord, 20, 100, 100, {sampleFactor: 0.2});
 
+        //for loops for points color
     for ( let i = 0; i < pointArray.length; i++) {
 
         //2 map to switch colors [i did red to yellow]

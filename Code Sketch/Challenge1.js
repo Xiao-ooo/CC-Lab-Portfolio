@@ -10,7 +10,7 @@ function preload(){
 function setup(){
    
     createCanvas(600, 600).parent("sketch-container");
-    background(73, 122, 86);
+    background(0);
 
 }
 

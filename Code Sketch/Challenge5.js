@@ -1,4 +1,3 @@
-
 let myFont;
 
 const ourWord = "MOO";
@@ -7,37 +6,31 @@ function preload(){
     myFont = loadFont("../comicSans.ttf");
 }
 
-
 function setup(){
-    //Canvas 2
+
     createCanvas(600, 600).parent("sketch-container");
     background(0);
- 
 }
-
 
 function draw(){
-    pointArray = 
+    background(0);
+    
+    let pointArray = myFont.textToPoints(ourWord, 20, 100, 100, {sampleFactor: 0.2});
 
-        //Points are objects and they are like pen tools in PS
-            //Sample Factors are resolution correctors and uses brackets {} and collins :
-        myFont.textToPoints(ourWord, 20, 100, 100, {sampleFactor: 0.2});
+    // Loop 
+    for (let i = 0; i < pointArray.length; i++) {
 
+        let r = map(i, 0, pointArray.length, 139, 255); 
+        let g = map(i, 0, pointArray.length, 0, 255);   
+        let b = 0; 
 
+        fill(r, g, b);
 
-    for ( let i = 0; i < pointArray.length; i++) {
-        let size = 0;
-
-        if (i > 10){
-            size = 5;
+        // modulo splits every other shape into pattern [2]
+        if (i % 2 === 0) {
+            circle(pointArray[i].x, pointArray[i].y, 5);
         } else {
-            size = 10;
+            square(pointArray[i].x - 5, pointArray[i].y - 5, 5);
         }
-
-        fill (random(0, 255), random(0, 255), random(0, 255));
-
-        square(pointArray[i].x, pointArray[i].y, size);
-
     }
 }
-
