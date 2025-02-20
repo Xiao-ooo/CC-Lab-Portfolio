@@ -1,104 +1,69 @@
 let myFont;
+
 let textPoints;
+let points = [];
 
-let myCustomPoints = [];
+let word = "HOME";
 
-function preload(){
+//The variable to move the points [smaller the number slower it moves]
+let moving = 0.005; 
+
+function preload() {
     myFont = loadFont("../comicSans.ttf");
 }
 
-
 function setup() {
+  createCanvas(500, 250).parent("sketch-container");
+  let x = width / 2;
+  let y = height / 2;
 
-    textPoints = myFont.textToPoints("YAA", 10, 170, 185, {sampleFactor: 0.2});
+  // textToPoint adjusting point location and visibility 
+  textPoints = myFont.textToPoints(word, x - 200, y + 50, width / 4, { sampleFactor: 0.2 });
 
-    for (let i = 0; i < textPoints.length; i++){
-        myCustomPoints.push (new CustomPoint(textPoints[i].x, (textPoints[i].y)));
-    }
-
-    createCanvas(400, 250).parent("sketch-container");
-    textSize(50);
-    noStroke(0);
+  // Store each point in an object and push it into the points array using a for loop
+  for (let i = 0; i < textPoints.length; i++) {
+    let p = textPoints[i];
+    let pt = new Point(p.x, p.y);
+    points.push(pt);
+  }
 }
 
+function draw() {
+  background(0);
 
-function draw(){
-    background(0, 0, 0, 10);
-
-    for (let i = 0; i < myCustomPoints.length; i++){
-
-        myCustomPoints[i].update();
-        myCustomPoints[i].display();
-
-    }
-
+  // For loop that runs every frame and updates the class
+  for (let i = 0; i < points.length; i++) {
+    points[i].update();
+    points[i].display();
+  }
 }
 
+class Point {
+  constructor(x, y) {
 
-class CustomPoint{
+    //position font the spread out font points 
+    this.x = random(width);  
+    this.y = random(height);
 
-    constructor(xPos, yPos){
-        this.r = random (0, 255);
-        this.g = random (0, 255);
-        this.b = random (0, 255);
+    //Position of the fonts after its emerged 
+    this.originalX = x;
+    this.originalY = y;
 
-        this.x = xPos;
-        this.y = yPos;
+    //Random color of text [pastel colors]
+    this.color = color(random(200, 255), random(200, 255), random(200, 255)); 
+  }
 
-        this.originalY = this.y;
+  update() {
+    // the movement of the emerging effect slowly moves in 
+    this.x += (this.originalX - this.x) * moving;
+    this.y += (this.originalY - this.y) * moving;
+  }
 
-        this.size = 5;
+  display() {
 
-        this.timer = 0;
+    stroke(this.color);
+    strokeWeight(5);
+    point(this.x, this.y);
 
-        this.blinkTime = random(0.5, 1.5);
-
-        this.on = true;
-        this.partnerPoint = null;
-
-        this.fallTimer = 0;
-        this.timeToFall = random(3, 4.73);
-
-        }
-
-        assignPartnerPoint(){
-            this.partnerpoint = random(myCustomPoints);
-        }
-
-    update(){
-        this.timer += deltaTime / 1000;
-        this.fallTimer += deltaTime / 1000;
-
-        if (this.timer >= this.blinkTime){
-
-            this.on = !this.on;
-            this.timer = 0;
-
-        }
-
-        if (this.fallTimer >= this.timeToFall){
-            this.falling = true;
-        }
-        if (this.falling){
-            this.y += 2.5;
-
-            if (this.y > height + this.size) {
-                this.y = this.originalY;
-                this.fallTimer = 0;
-                this.falling = false;
-            }
-        }
-
-    }
-
-    display(){
-
-        if (this.on){
-
-        fill(this.r, this.g, this.b);
-        circle(this.x, this.y, this.size);
-
-        }
-
-    }
+  }
 }

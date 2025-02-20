@@ -1,104 +1,87 @@
 let myFont;
-let textPoints;
+let points = [];
+let word = "PAIN";
+let time = 0;
 
-let myCustomPoints = [];
-
-function preload(){
+function preload() {
     myFont = loadFont("../comicSans.ttf");
 }
 
-
 function setup() {
+  createCanvas(500, 250).parent("sketch-container");
+  let x = width / 2;
+  let y = height / 2;
 
-    textPoints = myFont.textToPoints("YAA", 10, 170, 185, {sampleFactor: 0.2});
+  // Adjusting fonts and visibility
+  let textPoints = myFont.textToPoints(word, x - 200, y + 50, width / 3, { sampleFactor: 0.2 });
 
-    for (let i = 0; i < textPoints.length; i++){
-        myCustomPoints.push (new CustomPoint(textPoints[i].x, (textPoints[i].y)));
-    }
-
-    createCanvas(400, 250).parent("sketch-container");
-    textSize(50);
-    noStroke(0);
+  // Store each point using a for loop and push
+  for (let i = 0; i < textPoints.length; i++) {
+    let p = textPoints[i];
+    let pt = new Point(p.x, p.y, i); 
+    points.push(pt);
+  }
 }
 
+function draw() {
+  background(250, 250, 62, 10);
 
-function draw(){
-    background(0, 0, 0, 10);
+  time += 0.05;
 
-    for (let i = 0; i < myCustomPoints.length; i++){
-
-        myCustomPoints[i].update();
-        myCustomPoints[i].display();
-
-    }
-
+  // For loop that runs every frame and updates the class
+  for (let i = 0; i < points.length; i++) {
+    points[i].update(time); 
+    points[i].display();
+  }
 }
 
+class Point {
+  constructor(x, y, index) {
+    this.x = x;
+    this.y = y;
+    this.index = index;
 
-class CustomPoint{
+    //water liquid effect 
+    this.baseColor = color(0, 94, 21, 3);
+    //variables for smooth movements 
+    this.initialX = x; 
+    this.initialY = y; 
+  }
 
-    constructor(xPos, yPos){
-        this.r = random (0, 255);
-        this.g = random (0, 255);
-        this.b = random (0, 255);
+  update(time) {
+    // Sin and cos for wave movements
+    this.yOffset = sin(time + this.index * 0.6) * 10;
+    this.xOffset = cos(time + this.index * 0.8) * 2;  
+    
+    // Distortion of the point position 
+    this.distortX = sin(time + this.index * 0.3) * 2;
+    this.distortY = cos(time + this.index * 0.3) * 2;
+    this.randomX = random(-1, 1);
+    this.randomY = random(-1, 1);
+  }
 
-        this.x = xPos;
-        this.y = yPos;
+  display() {
 
-        this.originalY = this.y;
+    //More duplicates of the points 
+    let numDuplicates = 3; 
+    let offsetRange = 3; 
 
-        this.size = 5;
+    //for loop to adjust the duplicate points 
+    for (let i = 0; i < numDuplicates; i++) {
+      let offsetX = random(-offsetRange, offsetRange);
+      let offsetY = random(-offsetRange, offsetRange);
 
-        this.timer = 0;
+      // generates the postion of the new movement [fluid movements]
+      let fluidX = this.initialX + this.xOffset + this.distortX + offsetX + this.randomX;
+      let fluidY = this.initialY + this.yOffset + this.distortY + offsetY + this.randomY;
 
-        this.blinkTime = random(0.5, 1.5);
+      // liquid color effects 
+      let alpha = map(sin(time * 0.5 + this.index), -1, 1, 100, 255);
+      let colorVariation = color(255, 86, 43, alpha);
 
-        this.on = true;
-        this.partnerPoint = null;
-
-        this.fallTimer = 0;
-        this.timeToFall = random(3, 4.73);
-
-        }
-
-        assignPartnerPoint(){
-            this.partnerpoint = random(myCustomPoints);
-        }
-
-    update(){
-        this.timer += deltaTime / 1000;
-        this.fallTimer += deltaTime / 1000;
-
-        if (this.timer >= this.blinkTime){
-
-            this.on = !this.on;
-            this.timer = 0;
-
-        }
-
-        if (this.fallTimer >= this.timeToFall){
-            this.falling = true;
-        }
-        if (this.falling){
-            this.y += 2.5;
-
-            if (this.y > height + this.size) {
-                this.y = this.originalY;
-                this.fallTimer = 0;
-                this.falling = false;
-            }
-        }
-
+      stroke(colorVariation);
+      strokeWeight(5);
+      point(fluidX, fluidY);
     }
-
-    display(){
-
-        if (this.on){
-
-        fill(this.r, this.g, this.b);
-        circle(this.x, this.y, this.size);
-
-        }
-
-    }
+  }
 }

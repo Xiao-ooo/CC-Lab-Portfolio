@@ -1,104 +1,69 @@
 let myFont;
-let textPoints;
+let points = [];
+let word = "DESIRE";
 
-let myCustomPoints = [];
+let time = 0;
 
-function preload(){
+function preload() {
     myFont = loadFont("../comicSans.ttf");
+  }
+  
+  function setup() {
+    createCanvas(500, 250).parent("sketch-container");
+    let x = width / 2;
+    let y = height / 2;
+
+  // Adjusting fonts and visibility
+  let textPoints = myFont.textToPoints(word, x - 210, y + 50, width / 4.5, { sampleFactor: 0.2 });
+
+  // Store each point using a for loop and push
+  for (let i = 0; i < textPoints.length; i++) {
+    let p = textPoints[i];
+    let pt = new Point(p.x, p.y, i); 
+    points.push(pt);
+  }
 }
 
+function draw() {
+  background(0); 
 
-function setup() {
+  // Slow enough to see the word clearly
+  time += 0.02; 
 
-    textPoints = myFont.textToPoints("YAA", 10, 170, 185, {sampleFactor: 0.2});
-
-    for (let i = 0; i < textPoints.length; i++){
-        myCustomPoints.push (new CustomPoint(textPoints[i].x, (textPoints[i].y)));
-    }
-
-    createCanvas(400, 250).parent("sketch-container");
-    textSize(50);
-    noStroke(0);
+  // Update and display each point
+  for (let i = 0; i < points.length; i++) {
+    points[i].update(time);
+    points[i].display();
+  }
 }
 
+class Point {
+  constructor(x, y, index) {
+    this.x = x;
+    this.y = y;
+    this.index = index;
 
-function draw(){
-    background(0, 0, 0, 10);
+    // Set random colors to create the glowing effect
+    this.baseColor = color(random(150, 255), random(150, 255), random(150, 255)); 
+    this.glowStrength = random(10, 20); // Random strength for each point's glow
+  }
 
-    for (let i = 0; i < myCustomPoints.length; i++){
+  update(time) {
+    // Sin and cosine wave movement, can be adjusted for smoothness
+    this.xOffset = sin(time + this.x * 0.1) * 15;
+    this.yOffset = cos(time + this.y * 0.1) * 3;
+  }
 
-        myCustomPoints[i].update();
-        myCustomPoints[i].display();
+  display() {
+    // Glowing effect using for loop to adjust the opacity of the colors 
+    for (let i = 0; i < this.glowStrength; i++) {
+      let alpha = map(i, 0, this.glowStrength, 90, 0); 
+      let offset = i * 1; 
 
+      // Draw the glowing points with reduced opacity
+      strokeWeight(3);
+      stroke(this.baseColor.levels[0], this.baseColor.levels[1], this.baseColor.levels[2], alpha);
+      point(this.x + this.xOffset + offset, this.y + this.yOffset + offset); 
     }
-
-}
-
-
-class CustomPoint{
-
-    constructor(xPos, yPos){
-        this.r = random (0, 255);
-        this.g = random (0, 255);
-        this.b = random (0, 255);
-
-        this.x = xPos;
-        this.y = yPos;
-
-        this.originalY = this.y;
-
-        this.size = 5;
-
-        this.timer = 0;
-
-        this.blinkTime = random(0.5, 1.5);
-
-        this.on = true;
-        this.partnerPoint = null;
-
-        this.fallTimer = 0;
-        this.timeToFall = random(3, 4.73);
-
-        }
-
-        assignPartnerPoint(){
-            this.partnerpoint = random(myCustomPoints);
-        }
-
-    update(){
-        this.timer += deltaTime / 1000;
-        this.fallTimer += deltaTime / 1000;
-
-        if (this.timer >= this.blinkTime){
-
-            this.on = !this.on;
-            this.timer = 0;
-
-        }
-
-        if (this.fallTimer >= this.timeToFall){
-            this.falling = true;
-        }
-        if (this.falling){
-            this.y += 2.5;
-
-            if (this.y > height + this.size) {
-                this.y = this.originalY;
-                this.fallTimer = 0;
-                this.falling = false;
-            }
-        }
-
-    }
-
-    display(){
-
-        if (this.on){
-
-        fill(this.r, this.g, this.b);
-        circle(this.x, this.y, this.size);
-
-        }
-
-    }
+  }
 }

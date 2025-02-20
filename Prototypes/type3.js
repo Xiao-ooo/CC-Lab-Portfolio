@@ -1,104 +1,74 @@
 let myFont;
-let textPoints;
+let points = [];
+let word = "HOME";
+let time = 0;
 
-let myCustomPoints = [];
-
-function preload(){
+function preload() {
     myFont = loadFont("../comicSans.ttf");
 }
 
-
 function setup() {
+  createCanvas(500, 250).parent("sketch-container");
+  let x = width / 2;
+  let y = height / 2;
 
-    textPoints = myFont.textToPoints("YAA", 10, 170, 185, {sampleFactor: 0.2});
+  // Adjusting fonts and visibility
+  let textPoints = myFont.textToPoints(word, x - 200, y + 50, width / 4, { sampleFactor: 0.2 });
 
-    for (let i = 0; i < textPoints.length; i++){
-        myCustomPoints.push (new CustomPoint(textPoints[i].x, (textPoints[i].y)));
-    }
-
-    createCanvas(400, 250).parent("sketch-container");
-    textSize(50);
-    noStroke(0);
+  // Store each point using a for loop and push
+  for (let i = 0; i < textPoints.length; i++) {
+    let p = textPoints[i];
+    let pt = new Point(p.x, p.y, i); 
+    points.push(pt);
+  }
 }
 
+function draw() {
+  background(13, 53, 82);
 
-function draw(){
-    background(0, 0, 0, 10);
+  time += 0.05;
 
-    for (let i = 0; i < myCustomPoints.length; i++){
-
-        myCustomPoints[i].update();
-        myCustomPoints[i].display();
-
-    }
-
+  // For loop that runs every frame and updates the class
+  for (let i = 0; i < points.length; i++) {
+    points[i].update(time); 
+    points[i].display();
+  }
 }
 
+class Point {
+  constructor(x, y, index) {
+    this.x = x;
+    this.y = y;
+    this.index = index;
 
-class CustomPoint{
+    //the base color for each points [random]
+    this.baseColor = color(random(255), random(255), random(255)); 
+  }
 
-    constructor(xPos, yPos){
-        this.r = random (0, 255);
-        this.g = random (0, 255);
-        this.b = random (0, 255);
+  update(time) {
+    // Sin waves to add movement to yOffset & xOffset
+    this.yOffset = sin(time + this.index * 0.5) * 2;
+    this.xOffset = sin(time + this.index * 1) * 2;  
+  }
 
-        this.x = xPos;
-        this.y = yPos;
+  display() {
+    //calling new funcitons for duplicates of the points which sets them more tighter and the range is adjusted 
+    let numDuplicates = 6; 
+    let offsetRange = 5; 
 
-        this.originalY = this.y;
+    //loop for the duplicate points [their offsites range is set to randomized]
+    for (let i = 0; i < numDuplicates; i++) {
+      
+      let offsetX = random(-offsetRange, offsetRange);
+      let offsetY = random(-offsetRange, offsetRange);
+      
+      // Blend colors
+      let variation = map(i, 0, numDuplicates, 0, 255);
+      let colorVariation = lerpColor(this.baseColor, color(255, 255, 255), variation / 255);
 
-        this.size = 5;
-
-        this.timer = 0;
-
-        this.blinkTime = random(0.5, 1.5);
-
-        this.on = true;
-        this.partnerPoint = null;
-
-        this.fallTimer = 0;
-        this.timeToFall = random(3, 4.73);
-
-        }
-
-        assignPartnerPoint(){
-            this.partnerpoint = random(myCustomPoints);
-        }
-
-    update(){
-        this.timer += deltaTime / 1000;
-        this.fallTimer += deltaTime / 1000;
-
-        if (this.timer >= this.blinkTime){
-
-            this.on = !this.on;
-            this.timer = 0;
-
-        }
-
-        if (this.fallTimer >= this.timeToFall){
-            this.falling = true;
-        }
-        if (this.falling){
-            this.y += 2.5;
-
-            if (this.y > height + this.size) {
-                this.y = this.originalY;
-                this.fallTimer = 0;
-                this.falling = false;
-            }
-        }
-
+      stroke(colorVariation);
+      strokeWeight(1);
+      point(this.x + offsetX + this.xOffset, this.y + offsetY + this.yOffset);
     }
-
-    display(){
-
-        if (this.on){
-
-        fill(this.r, this.g, this.b);
-        circle(this.x, this.y, this.size);
-
-        }
-
-    }
+  }
 }
