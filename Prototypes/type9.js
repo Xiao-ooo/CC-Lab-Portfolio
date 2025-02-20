@@ -1,5 +1,8 @@
 let myFont;
-let textPoints;
+let points = [];
+let word = "DESIRE";
+
+let time = 0;
 
 let myCustomPoints = [];
 
@@ -7,38 +10,43 @@ function preload(){
     myFont = loadFont("../comicSans.ttf");
 }
 
+function preload() {
+    myFont = loadFont("../comicSans.ttf");
+}
 
 function setup() {
+    createCanvas(500, 250).parent("sketch-container");
+    let x = width / 2;
+    let y = height / 2;
 
-    textPoints = myFont.textToPoints("YAA", 10, 170, 185, {sampleFactor: 0.2});
+    // Adjusting fonts and visibility
+    let textPoints = myFont.textToPoints(word, x - 210, y + 50, width / 4.5, { sampleFactor: 0.2 });
 
-    for (let i = 0; i < textPoints.length; i++){
-        myCustomPoints.push (new CustomPoint(textPoints[i].x, (textPoints[i].y)));
+    // Store each point using a for loop and push to points array
+    for (let i = 0; i < textPoints.length; i++) {
+        let p = textPoints[i];
+        let pt = new Point(p.x, p.y, i); 
+        points.push(pt);
     }
-
-    createCanvas(400, 250).parent("sketch-container");
-    textSize(50);
-    noStroke(0);
 }
 
 
-function draw(){
-    background(0, 0, 0, 10);
+function draw() {
+    background(0, 0, 0, 5);
 
-    for (let i = 0; i < myCustomPoints.length; i++){
-
-        myCustomPoints[i].update();
-        myCustomPoints[i].display();
-
+    // Update and display each point
+    for (let i = 0; i < points.length; i++) {
+        points[i].update(); 
+        points[i].display(); 
     }
-
 }
 
 
-class CustomPoint{
+
+class Point{
 
     constructor(xPos, yPos){
-        this.r = random (0, 255);
+        this.r = 10;
         this.g = random (0, 255);
         this.b = random (0, 255);
 
@@ -48,40 +56,23 @@ class CustomPoint{
         this.originalY = this.y;
 
         this.size = 5;
-
-        this.timer = 0;
-
-        this.blinkTime = random(0.5, 1.5);
-
         this.on = true;
-        this.partnerPoint = null;
 
         this.fallTimer = 0;
         this.timeToFall = random(3, 4.73);
 
         }
 
-        assignPartnerPoint(){
-            this.partnerpoint = random(myCustomPoints);
-        }
-
     update(){
-        this.timer += deltaTime / 1000;
         this.fallTimer += deltaTime / 1000;
-
-        if (this.timer >= this.blinkTime){
-
-            this.on = !this.on;
-            this.timer = 0;
-
-        }
 
         if (this.fallTimer >= this.timeToFall){
             this.falling = true;
         }
+        //You can adjust the the falling shades trails and it comes back up
         if (this.falling){
-            this.y += 2.5;
-
+            this.y += 1.5;
+            //Help from luca
             if (this.y > height + this.size) {
                 this.y = this.originalY;
                 this.fallTimer = 0;
@@ -94,9 +85,10 @@ class CustomPoint{
     display(){
 
         if (this.on){
-
-        fill(this.r, this.g, this.b);
+        //the last value makes it more smooth
+        fill(this.r, this.g, this.b, 100);
         circle(this.x, this.y, this.size);
+        noStroke();
 
         }
 
