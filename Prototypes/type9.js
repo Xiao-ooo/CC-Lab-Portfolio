@@ -34,6 +34,8 @@ function setup() {
 function draw() {
     background(0, 0, 0, 5);
 
+    //clear();
+
     // Update and display each point
     for (let i = 0; i < points.length; i++) {
         points[i].update(); 
