@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+        <title>Prototype</title>
+        <style>
+            body {
+                background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
+                background-size: 400% 400%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; 
+                margin: 0;  
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 3em;
+                text-align: center;
+                color: rgb(36, 255, 251);
+                margin-bottom: 20px;
+            }
+
+            .home-btn {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                padding: 15px 30px;
+                color: #ffffff;
+                border: none;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+            }
+
+            .home-btn:hover {
+                background-color: #000000; 
+                transform: scale(1.05); 
+                box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+            }
+
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 2.5rem;
+                }
+
+                .home-btn {
+                    font-size: 1rem;
+                    padding: 12px 25px;
+                }
+            }
+
+            /* Center canvas inside the sketch-container */
+            #sketch-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+
+        <a href="FinalTypography.html" class="home-btn">🏠 ←BACK</a>
+
+        <h1>Protoypes</h1>
+
+            <div id="sketch-container"></div>
+
+                <script src="cam1.js"></script>
+
+        <h1>prototype 1</h1>
+
+    </body>
+</html>
