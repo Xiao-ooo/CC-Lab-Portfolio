@@ -4,23 +4,25 @@
 let capture;
 
 function setup() {
+
   createCanvas(600, 600).parent("sketch-container");
   capture = createCapture(VIDEO, {flipped: true});
   capture.hide();
   noStroke();
+
 }
 
 function draw() {
+
   capture.loadPixels();
   
-
-  // Draw random points with polar coordinate transformations
+  // Draw random points with polar coordinate transformations for every 10000
   for (let i = 0; i < 10000; i++) {
     drawIllusionaryPoint();
   }
+
 }
 
-// Function to get the color from the pixel array
 function getColorFromPixelArray(pixelArray, x, y, w) {
   const index = (x + y * w) * 4;
   const r = pixelArray[index];
@@ -30,6 +32,7 @@ function getColorFromPixelArray(pixelArray, x, y, w) {
 
   return color(r, g, b, a);
 }
+
 
 function drawIllusionaryPoint() {
 
