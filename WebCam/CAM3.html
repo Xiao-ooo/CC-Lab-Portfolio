@@ -5,21 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+        <script src="https://www.auduno.com/clmtrackr/build/clmtrackr.min.js"></script>
+
         
-        <title>Code Challenges</title>
+        <title>Prototype</title>
         <style>
             body {
                 background: linear-gradient(45deg, #05057d, #163d58, #28c6a6, #000000);
                 background-size: 400% 400%;
-                font-family: 'Times New Roman', Times, serif, sans-serif;
-                margin: 0;
-                padding: 0;
-                height: 100vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                height: 100vh; 
+                margin: 0;  
                 flex-direction: column;
             }
+
             h1 {
                 font-size: 3em;
                 text-align: center;
@@ -27,35 +28,6 @@
                 margin-bottom: 20px;
             }
 
-            
-            .tab-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 15px;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.6);
-                border-radius: 10px;
-            }
-
-            
-            .tab-link {
-                color: #ffffff;
-                text-decoration: none;
-                padding: 10px 20px;
-                background: #163d58;
-                border-radius: 25px;
-                font-size: 1.2rem;
-                text-align: center;
-                transition: all 0.3s ease;
-            }
-
-            .tab-link:hover {
-                background-color: #28c6a6;
-                transform: scale(1.1);
-            }
-
-            /* Home button styling */
             .home-btn {
                 position: fixed;
                 bottom: 20px;
@@ -68,7 +40,6 @@
                 cursor: pointer;
                 transition: all 0.3s ease;
                 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
-                margin-top: 20px;
             }
 
             .home-btn:hover {
@@ -77,18 +48,7 @@
                 box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
             }
 
-            /* Responsive adjustments */
             @media (max-width: 768px) {
-                .tab-container {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .tab-link {
-                    font-size: 1.1rem;
-                    padding: 12px 25px;
-                }
-
                 h1 {
                     font-size: 2.5rem;
                 }
@@ -98,21 +58,28 @@
                     padding: 12px 25px;
                 }
             }
+
+            /* Center canvas inside the sketch-container */
+            #sketch-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
         </style>
     </head>
     <body>
 
-        <a href="../2025 CC Lab.html" class="home-btn">🏠 ←BACK</a>
+        <a href="webcam.html" class="home-btn">🏠 ←BACK</a>
 
-        <h1>Web Camera PROTOTYPES</h1>
+        <h1>Experimental Camera</h1>
 
-        <!-- Tab container for links -->
-        <div class="tab-container">
-            <a href="CAM1.html" class="tab-link">Example 1</a>
-            <a href="CAM2.html" class="tab-link">Example 2</a>
-            <a href="CAM3.html" class="tab-link">Final Camera</a>
-            
-        </div>
+            <div id="sketch-container"></div>
+
+                <script src="cam3.js"></script>
+
+        <h1>FINAL</h1>
 
     </body>
 </html>
