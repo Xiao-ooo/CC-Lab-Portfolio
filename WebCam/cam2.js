@@ -7,7 +7,7 @@ let noseDrawingLayer;
 
 function setup() {
 
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(600, 600).parent("sketch-container");
   capture = createCapture(VIDEO, {flipped: true}, onCaptureCreated);
   capture.hide();
   tracker = new clm.tracker();
@@ -87,9 +87,6 @@ function drawMouth() {
   const distance = dist(topXPos, topYPos, botXPos, botYPos);
 
   const mappedSize = map(distance, 0, 16, 5, 40, true);
-
-  // console.log(floor(distance));
-
 
   circle(botXPos, botYPos, mappedSize);
 }
