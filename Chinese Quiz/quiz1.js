@@ -1,4 +1,4 @@
-// Vocabulary Data (characters and their English meanings)
+// mando vocab + definition
 const vocabulary = [
     { chinese: '你好', pronunciation: 'Nǐ hǎo', meaning: 'Hello' },
     { chinese: '谢谢', pronunciation: 'Xiè Xiè', meaning: 'Thank You' },
@@ -10,118 +10,126 @@ const vocabulary = [
     { chinese: '我', pronunciation: 'Wǒ', meaning: 'Me' }
   ];
   
-  // Variables for quiz state
-  let currentQuestionIndex = 0;
-  let correctAnswers = 0;
-  let totalQuestions = vocabulary.length;
-  let triesLeft = 2;
+  let currentIndex = 0;
+  let score = 0;
+  let tries = 3;
   
-  // Shuffle the vocabulary list
-  function shuffleVocab() {
+  // random question 
+  function shuffleVocabulary() {
+
     vocabulary.sort(() => Math.random() - 0.5);
+    
   }
   
-  // Function to show next question
+  // When my question is shown and all selecction shown , after making choice next question shows
   function showNextQuestion() {
-    if (currentQuestionIndex >= totalQuestions) {
-      // If all questions are completed, show results
-      showResults();
-      return;
+
+    if (currentIndex >= vocabulary.length) {
+      return showResults(); 
+
     }
   
-    const question = vocabulary[currentQuestionIndex];
-    const questionText = document.getElementById('questionText');
-    const quizOptions = document.getElementById('quizOptions');
-    const feedback = document.getElementById('feedback');
-    const chineseCharacter = document.getElementById('chineseCharacter');
-    const pointCount = document.getElementById('pointCount');
+    const question = vocabulary[currentIndex];
+
+    //sorting them into dictionary - find them by searching 
+    const chineseCharacterElement = document.getElementById('chineseCharacter');
+    const questionTextElement = document.getElementById('questionText');
+    const quizOptionsElement = document.getElementById('quizOptions');
+    const feedbackElement = document.getElementById('feedback');
+    const pointCountElement = document.getElementById('pointCount');
   
-    // Display the Chinese character prominently in the center
-    chineseCharacter.textContent = question.chinese;
+    //center word
+    chineseCharacterElement.textContent = question.chinese;
+    questionTextElement.textContent = `What is the pronunciation for "${question.meaning}"?`;
   
-    // Display the question
-    questionText.textContent = `What is the correct pronunciation for "${question.meaning}"?`;
-  
-    // Create 4 options, with 1 correct and 3 incorrect
-    let options = [question.pronunciation];
-  
-    // Add random incorrect answers
+    // Options, given 4 and choose the correct answer 
+    const options = [question.pronunciation];
+
     while (options.length < 4) {
+
       const randomOption = vocabulary[Math.floor(Math.random() * vocabulary.length)].pronunciation;
-      if (!options.includes(randomOption)) {
-        options.push(randomOption);
-      }
+      if (!options.includes(randomOption)) options.push(randomOption);
+
     }
-  
-    // Shuffle the options
+
+    //same as top , random answer
     options.sort(() => Math.random() - 0.5);
   
-    // Clear previous options and feedback
-    quizOptions.innerHTML = '';
-    feedback.innerHTML = '';
+    // restart the result because new question
+    quizOptionsElement.innerHTML = '';
+    feedbackElement.innerHTML = '';
   
-    // Create buttons for each option
+    // slect the correct answer button
     options.forEach(option => {
-      const button = document.createElement('button');
-      button.textContent = option;
-      button.classList.add('quiz-option');
-      button.onclick = function () {
-        checkAnswer(question.pronunciation, option);
-      };
-      quizOptions.appendChild(button);
-    });
+
+            const button = document.createElement('button');
+
+            button.textContent = option;
+            button.classList.add('quiz-option');
+            button.onclick = () => checkAnswer(question.pronunciation, option);
+            quizOptionsElement.appendChild(button);
+
+        }
+    );
   }
   
-  // Check the user's answer
+  // Check the answer if its correct, adds point if not shows inccorect result and each player gets 3 tries 
   function checkAnswer(correctAnswer, selectedAnswer) {
-    const feedback = document.getElementById('feedback');
-    const pointCount = document.getElementById('pointCount');
+
+        const feedbackElement = document.getElementById('feedback');
+        const pointCountElement = document.getElementById('pointCount');
   
-    if (selectedAnswer === correctAnswer) {
-      correctAnswers++;
-      pointCount.textContent = `Points: ${correctAnswers}`;
-      feedback.innerHTML = `<p style="color: green;">Correct! 🎉</p>`;
-      currentQuestionIndex++;  // Move to next question
-      setTimeout(() => {
-        showNextQuestion();  // Automatically go to the next question
-      }, 1500);  // Wait 1.5 seconds before showing next question
-    } else {
-      triesLeft--;
-  
-      if (triesLeft > 0) {
-        // Show hint after the first incorrect attempt before allowing the second try
-        const hint = correctAnswer.charAt(0);  // First letter hint
-        feedback.innerHTML = `<p style="color: red;">Incorrect! Try again. ${triesLeft} tries left.</p>`;
-        feedback.innerHTML += `<p style="color: blue;">Hint: The pronunciation starts with "${hint}".</p>`;
-      } else {
-        feedback.innerHTML = `<p style="color: red;">Incorrect! The correct answer was: ${correctAnswer}</p>`;
-        currentQuestionIndex++;  // Move to next question
-        triesLeft = 2;  // Reset tries
-        setTimeout(() => {
-          showNextQuestion();  // Automatically go to the next question
-        }, 2000);  // Wait 2 seconds before showing next question
-      }
-    }
+            if (selectedAnswer === correctAnswer) {
+
+            score++;
+            pointCountElement.textContent = `Points: ${score}`;
+            feedbackElement.innerHTML = `<p style="color: green;">Correct! 🎉</p>`;
+            currentIndex++;
+            setTimeout(showNextQuestion, 500); 
+
+            } else { tries--;
+
+            if (tries > 0) {
+                //i gave a hint if they got the first try wrong, 1 letter of the pronounciation is given
+                const hint = correctAnswer.charAt(0); 
+                feedbackElement.innerHTML = `<p style="color: red;">Incorrect! Try again. ${tries} tries left.</p>`;
+                feedbackElement.innerHTML += `<p style="color: blue;">Hint: The pronunciation starts with "${hint}".</p>`;
+
+            } else {
+
+                feedbackElement.innerHTML = `<p style="color: red;">Incorrect! The correct answer was: ${correctAnswer}</p>`;
+                currentIndex++;
+                tries = 3; 
+                setTimeout(showNextQuestion, 500); 
+
+            }
+        }
   }
   
-  // Show quiz results
+  // quiz result is generated by the amount of answer, 8 question in total so its divided among this
+  //at least 65% to pass
   function showResults() {
-    const percentage = (correctAnswers / totalQuestions) * 100;
-    const feedback = document.getElementById('feedback');
+
+    const percentage = (score / vocabulary.length) * 100;
+    const feedbackElement = document.getElementById('feedback');
+  
     if (percentage >= 65) {
-      feedback.innerHTML = `<p style="color: green;">You passed with ${percentage}% correct! 🎉</p>`;
+
+      feedbackElement.innerHTML = `<p style="color: green;">You passed with ${percentage}% correct! 🎉</p>`;
+
     } else {
-      feedback.innerHTML = `<p style="color: red;">You did not pass. Restarting the quiz...</p>`;
+
+      feedbackElement.innerHTML = `<p style="color: red;">You did not pass. Restarting the quiz...</p>`;
       setTimeout(() => {
-        correctAnswers = 0;
-        currentQuestionIndex = 0;
-        shuffleVocab(); // Shuffle the vocabulary
+        score = 0;
+        currentIndex = 0;
+        shuffleVocabulary(); // Shuffle the vocabulary again
         showNextQuestion();
-      }, 2000);
+      }, 500);
     }
   }
   
-  // Initialize the quiz
-  shuffleVocab();
+  // Start quiz
+  shuffleVocabulary();
   showNextQuestion();
   

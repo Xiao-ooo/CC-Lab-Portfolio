@@ -6,9 +6,14 @@
   <title>Chinese Language Practice</title>
 
   <style>
+    @font-face {
+    font-family: 'MyFont';
+    src: url('FontFolder2/Font2.ttf') format('truetype');
+    }
+
     body {
-      font-family: 'Times New Roman', Times, serif, sans-serif;
-      background-color: #fff8e1;
+      font-family: 'MyFont', sans-serif;
+      background-color: #facf8f; 
       color: #333;
       margin: 0;
       padding: 0;
@@ -20,11 +25,9 @@
     }
 
     header {
-      background-color: #ffb74d; 
-      color: white;
+      color: #ff9800;
       padding: 20px 0;
       text-align: center;
-      border-bottom: 5px solid #ff9800; 
       width: 100%;
       max-width: 800px;
       border-radius: 10px;
@@ -96,8 +99,8 @@
     }
 
     .card-back {
-      background-color: white;
-      color: #333;
+      background-color: rgb(246, 242, 237);
+      color: #1c1308;
       transform: rotateY(180deg);
       padding: 10px;
       display: flex;
