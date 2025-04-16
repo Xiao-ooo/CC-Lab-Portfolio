@@ -93,28 +93,14 @@ const vocabulary = [
     }
   }
   
-  //same rule
- //at least 65% to pass
-  function showResults() {
+
+  function showResults(){
     const percentage = (correctAnswers / vocabulary.length) * 100;
-    const feedback = document.getElementById('feedback');
-  
-    if (percentage >= 65) {
+    localStorage.setItem("percentage", percentage);
 
-      feedback.innerHTML = `<p style="color: green;">You passed with ${percentage}% correct! 🎉</p>`;
-    } else {
-
-      feedback.innerHTML = `<p style="color: red;">You did not pass. Restarting the quiz...</p>`;
-      setTimeout(() => {
-        correctAnswers = 0;
-        currentQuestionIndex = 0;
-        shuffleVocab(); 
-        showNextQuestion();
-      }, 500);
-    }
+    window.location.href = "result2.html";
   }
-  
+
   // Start quiz
   shuffleVocab();
   showNextQuestion();
-  
