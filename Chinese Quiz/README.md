@@ -36,7 +36,7 @@
 - I referenced duolingo and quizlet, i am inspired and also think using flip cards is a fun and easy way to learn. You don't see the definition but you have it and you can use it if you need. 
 
 
-## Challenges 
+## Challenges
 
 1. **HTML**:
    - Sorting out the format of every class and the holder for it was a long process and was getting very confusing at first.
