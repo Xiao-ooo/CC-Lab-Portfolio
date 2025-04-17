@@ -23,7 +23,7 @@ const vocabulary = [
 
   }
   
-  // Show character first 
+  // Show character first
   function showNextQuestion() {
     if (currentQuestionIndex >= vocabulary.length) {
       showResults();
