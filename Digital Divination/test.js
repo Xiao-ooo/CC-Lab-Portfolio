@@ -7,7 +7,7 @@ const weatherPath =
 "&units=imperial"+ //units
 "&appid=0"; //key
 
-
+//directs to external JSON file data [reading data that you want]
 // fetch ("./test.JSON")
 //     .then(response => response.json())
 //     .then(handleParsedData)

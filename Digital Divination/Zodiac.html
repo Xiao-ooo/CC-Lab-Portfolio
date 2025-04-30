@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <title>Zodiac Mirror</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cinzel', serif;
+      background: 
+      url('https://www.transparenttextures.com/patterns/fog.png'), 
+      url('BG.png');
+      background-blend-mode: overlay;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #402974;
+    }
+
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mirror {
+      width: 700px;
+      height: 750px;
+      background: url('Mirror.png') no-repeat center center;
+      background-size: contain;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mirror-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      max-width: 70%;
+    }
+
+
+
+    .mirror-content h1 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+
+    .mirror-content select, 
+    .mirror-content button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    .mirror-content button {
+      background-color: #b9a5d2;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .mirror-content button:hover {
+      background-color: #9370b0;
+    }
+
+
+    select, button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    button {
+      background-color: #c0a78f;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #a58b72;
+    }
+
+    .home-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 12px 25px;
+      color: #ffffff;
+      background-color: #2b3e5a;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
+  }
+
+
+  .home-btn:hover {
+    background-color: #ab7ee7;
+    transform: scale(1.05);
+  }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      background: transparent;
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="mirror">
+      <div class="mirror-content">
+        <h1>Peer into the Zodiac Mirror</h1>
+        <label for="sign">Choose your Zodiac Sign:</label><br/>
+        <select id="sign">
+          <option value="aries">Aries</option>
+          <option value="taurus">Taurus</option>
+          <option value="gemini">Gemini</option>
+          <option value="cancer">Cancer</option>
+          <option value="leo">Leo</option>
+          <option value="virgo">Virgo</option>
+          <option value="libra">Libra</option>
+          <option value="scorpio">Scorpio</option>
+          <option value="sagittarius">Sagittarius</option>
+          <option value="capricorn">Capricorn</option>
+          <option value="aquarius">Aquarius</option>
+          <option value="pisces">Pisces</option>
+        </select><br/>
+        <button onclick="goToHoroscope()">Reveal Horoscope</button>
+
+      </div>
+    </div>
+    
+  <!-- Home Button -->
+  <a href="../2025 CC Lab.html" class="home-btn">🏠</a>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Xiao Xing Speedy Mandarin Learning. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function goToHoroscope() {
+      const sign = document.getElementById("sign").value;
+      window.location.href = `horoscope.html?sign=${sign}`;
+    }
+  </script>
+
+</body>
+</html>

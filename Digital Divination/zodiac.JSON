@@ -1,0 +1,39 @@
+{
+    "Aries": {
+      "personality": "Bold, ambitious, and passionate. Aries dives headfirst into challenges."
+    },
+    "Taurus": {
+      "personality": "Reliable, patient, and practical. Taurus enjoys the finer things in life."
+    },
+    "Gemini": {
+      "personality": "Curious, adaptable, and expressive. Gemini loves communication and variety."
+    },
+    "Cancer": {
+      "personality": "Sensitive, intuitive, and loyal. Cancer values emotional connection."
+    },
+    "Leo": {
+      "personality": "Confident, charismatic, and creative. Leo thrives in the spotlight."
+    },
+    "Virgo": {
+      "personality": "Analytical, meticulous, and helpful. Virgo enjoys organization and precision."
+    },
+    "Libra": {
+      "personality": "Diplomatic, fair, and charming. Libra seeks balance in all things."
+    },
+    "Scorpio": {
+      "personality": "Intense, mysterious, and powerful. Scorpio is deeply emotional and loyal."
+    },
+    "Sagittarius": {
+      "personality": "Adventurous, optimistic, and philosophical. Sagittarius loves exploring ideas."
+    },
+    "Capricorn": {
+      "personality": "Disciplined, responsible, and goal-oriented. Capricorn is a natural leader."
+    },
+    "Aquarius": {
+      "personality": "Innovative, independent, and humanitarian. Aquarius values progress and change."
+    },
+    "Pisces": {
+      "personality": "Empathetic, artistic, and dreamy. Pisces is deeply connected to emotions."
+    }
+  }
+  
