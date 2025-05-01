@@ -22,7 +22,7 @@ async function fetchHoroscope(sign) {
     }
 
     const data = await response.json();
-    
+
     if (data.description) {
 
       document.getElementById('horoscopeResult').innerHTML = `
@@ -38,6 +38,7 @@ async function fetchHoroscope(sign) {
 
       document.getElementById('horoscopeResult').innerHTML = `<p>Error: Horoscope data not available.</p>`;
 
+      
     }
   } catch (error) {
 
