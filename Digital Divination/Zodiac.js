@@ -12,11 +12,17 @@ async function fetchHoroscope(sign) {
   const url = `${apiUrl}?sign=${sign}&date=${date}&token=${apiKey}`;
 
   try {
+
     const response = await fetch(url); 
+
     if (!response.ok) {
+
       throw new Error(`HTTP error! status: ${response.status}`);
+      
     }
+
     const data = await response.json();
+    
     if (data.description) {
 
       document.getElementById('horoscopeResult').innerHTML = `
