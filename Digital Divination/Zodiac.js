@@ -47,9 +47,14 @@ const zodiacDescriptions = {
 
 async function fetchHoroscope(sign) {
 
-  //I can change the time of the result, base on daily, weekly or monthly
-  const date = 'today';
-  const url = `${apiUrl}?sign=${sign}&date=${date}&token=${apiKey}`;
+  //This is going to get the local time 
+  const now = new Date();
+  const dateString = now.getFullYear() + '-' +
+    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+    String(now.getDate()).padStart(2, '0');
+
+  const url = `${apiUrl}?sign=${sign}&date=${dateString}&token=${apiKey}`;
+
 
   try {
 
