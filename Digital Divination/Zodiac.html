@@ -129,6 +129,15 @@
       background: transparent;
       color: #ccc;
     }
+
+    .mirror-content label {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+
   </style>
 </head>
 
@@ -137,23 +146,13 @@
   <div class="container">
     <div class="mirror">
       <div class="mirror-content">
-        <h1>Peer into the Zodiac Mirror</h1>
-        <label for="sign">Choose your Zodiac Sign:</label><br/>
-        <select id="sign">
-          <option value="aries">Aries</option>
-          <option value="taurus">Taurus</option>
-          <option value="gemini">Gemini</option>
-          <option value="cancer">Cancer</option>
-          <option value="leo">Leo</option>
-          <option value="virgo">Virgo</option>
-          <option value="libra">Libra</option>
-          <option value="scorpio">Scorpio</option>
-          <option value="sagittarius">Sagittarius</option>
-          <option value="capricorn">Capricorn</option>
-          <option value="aquarius">Aquarius</option>
-          <option value="pisces">Pisces</option>
-        </select><br/>
-        <button onclick="goToHoroscope()">Reveal Horoscope</button>
+
+        <label for="birthdate">Enter your birthday</label><br/>
+        <input type="number" id="month" placeholder="MM" min="1" max="12" required>
+        <input type="number" id="day" placeholder="DD" min="1" max="31" required>
+        <input type="number" id="year" placeholder="YYYY" min="1900" max="2025" required><br/>
+        <button onclick="calculateZodiac()">Reveal Horoscope</button>
+      
 
       </div>
     </div>
@@ -166,12 +165,36 @@
     <p>&copy; 2025 Xiao Xing Speedy Mandarin Learning. All rights reserved.</p>
   </footer>
 
-  <script>
-    function goToHoroscope() {
-      const sign = document.getElementById("sign").value;
-      window.location.href = `horoscope.html?sign=${sign}`;
-    }
-  </script>
+<script>
+function calculateZodiac() {
+  const month = parseInt(document.getElementById('month').value);
+  const day = parseInt(document.getElementById('day').value);
+
+  if (!month || !day || month > 12 || day > 31) {
+    alert("Please enter a valid date.");
+    return;
+  }
+
+  const sign = getZodiacSign(month, day);
+  window.location.href = `horoscope.html?sign=${sign}`;
+}
+
+function getZodiacSign(month, day) {
+  if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "aquarius";
+  if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "pisces";
+  if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "aries";
+  if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return "taurus";
+  if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "gemini";
+  if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return "cancer";
+  if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return "leo";
+  if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return "virgo";
+  if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "libra";
+  if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "scorpio";
+  if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "sagittarius";
+  if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return "capricorn";
+}
+</script>
+
 
 </body>
 </html>
